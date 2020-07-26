@@ -1,0 +1,80 @@
+﻿@model AspnetMvcDemo.Models.UserLogin
+@using MyResource = Resources
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/Layouts/_LayoutBlank.cshtml";
+
+}
+
+@section Styles {
+    <!-- Page -->
+    @Styles.Render("~/bundle/vendor/css/pages/authentication")
+}
+
+<style>
+    *{
+        color: black;
+        font-weight:bold;
+    }
+</style>
+
+<div class="authentication-wrapper authentication-3" dir="rtl">
+    <div class="authentication-inner">
+        <!-- Side container -->
+        <!-- Do not display the container on extra small, small and medium screens -->
+        <div class="d-none d-lg-flex col-lg-8 align-items-center ui-bg-cover ui-bg-overlay-container">
+            <img src="~/Images/back1.jpg" class="img-responsive" style="width:100%; height:100%;" />
+
+        
+        </div>
+
+        <!-- / Side container -->
+        <!-- Form container -->
+        <div class="d-flex col-lg-4 align-items-center bg-white p-5" style="background-image:url('../../Images/back2.jpg')">
+            <!-- Inner container -->
+            <!-- Have to add `.d-flex` to control width via `.col-*` classes -->
+            <div class="d-flex col-sm-7 col-md-5 col-lg-12 px-0 px-xl-4 mx-auto">
+         
+                <div class="w-100">
+
+                    <h4 class="text-center font-weight-bold mt-0 mb-5">@Resources.Resources.Quanlity_Control_System_for_Concrete</h4>
+                    <!-- Form -->
+                    @using (Html.BeginForm("Login", "Authentication"))
+                    {
+                        @Html.AntiForgeryToken()
+                        <form class="my-5">
+                            <div class="form-group">
+                                
+                                <label class="form-label d-flex justify-content-between align-items-end">
+                                    <label class="form-label">@Resources.Resources.User_name</label>
+                                    @*<a href="javascript:void(0)" class="d-block small">Forgot password?</a>*@
+                                </label>
+                                @*<input type="text" class="form-control">*@
+                                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = Resources.Resources.User_name, @required = true, @autofocus = "autofocus" })
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label d-flex justify-content-between align-items-end">
+                                    <label class="form-label">@Resources.Resources.Password</label>
+                                    @*<a href="javascript:void(0)" class="d-block small">Forgot password?</a>*@
+                                </label>
+                                @*<input type="password" class="form-control">*@
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control sign-up-input", placeholder = Resources.Resources.Password, @required = true })
+                            </div>
+                            <div class="d-flex justify-content-center align-items-center m-0">
+                                <button type="submit" class="btn btn-dark" style="text-align:center">@Resources.Resources.Sign_In</button>
+                            </div>
+                        </form>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    }
+                   
+                    <div class="clearfix"></div>
+                    <div class="d-flex justify-content-center align-items-center mt-3">
+                     <img  src="~/Images/3.png" width="75%" height="75%"/>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+        <!-- / Form container -->
+    </div>
+</div>

@@ -1,0 +1,73 @@
+﻿@model AspnetMvcDemo.Models.BringMaterials
+@using Resources
+@{
+    List<SelectListItem> UserList = new List<SelectListItem>();
+    foreach (var item in Model.users)
+    {
+        UserList.Add(new SelectListItem
+        {
+            Text = item.FullName,
+            Value = item.Id.ToString()
+        });
+    }
+
+    List<SelectListItem> LocationList = new List<SelectListItem>();
+    foreach (var item in Model.locations)
+    {
+        LocationList.Add(new SelectListItem
+        {
+            Text = item.Location_Arabic,
+            Value = item.Id.ToString()
+        });
+    }
+
+    List<SelectListItem> FactoriesList = new List<SelectListItem>();
+    foreach (var item in Model.factories)
+    {
+        FactoriesList.Add(new SelectListItem
+        {
+            Text = item.Name,
+            Value = item.Id.ToString()
+        });
+    }
+   
+   }
+
+}
+    <body>
+        @using (Html.BeginForm("Index", "BringMaterial", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+        {
+           using(Html.BeginForm("getFact", "BringMaterial", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+            {
+                <div class="form-group">
+                    <label>@Resources.Monitor_Name</label>
+                    <div class="col-md-5">
+                        @Html.DropDownListFor(x => x.BringMaterialVisit.user_id, UserList, new { @class = "form-control" })
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label>@Resources.Factroy_Location</label>
+                    <div class="col-md-5">
+                        @Html.DropDownListFor(x => x.BringMaterialVisit.location_id, LocationList, new { @class = "form-control", id = "location" })
+
+                    </div>
+
+                </div>
+                <button type="submit" class="btn btn-success">@Resources.Factories_List</button>
+            }
+            <div class="form-group">
+                <label>@Resources.Factroy_Location</label>
+                <div class="col-md-5">
+                    @Html.DropDownListFor(x => x.BringMaterialVisit.fact_id, FactoriesList, new { @class = "form-control", id = "factories" })
+
+                </div>
+                <button type="submit" class="btn btn-success">@Resources.Save</button>
+            </div>
+        }
+    </body>
+
+
+
