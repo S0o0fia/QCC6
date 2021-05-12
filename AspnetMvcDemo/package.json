@@ -27,7 +27,7 @@
     "select2": "~4.0.6-rc.1",
     "spinkit": "~1.2.5",
     "sweetalert2": "~8.18.0",
-    "swiper": "~5.1.0",
+    "swiper": "~6.5.1",
     "toastr": "~2.1.4",
     "vegas": "~2.4.0"
   }
